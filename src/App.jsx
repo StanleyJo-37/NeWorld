@@ -1,18 +1,23 @@
 import './App.css';
-import { useContext, useEffect } from 'react';
-import { ThemeContext } from './contexts/ThemeContext';
+import Navbar from './components/navbar';
+import { Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { navItems } from './constants/nav-items';
 
 export default function App() {
-  const { mode, setMode } = useContext(ThemeContext);
-  const defaultMode = window.matchMedia('(prefers-color-theme: dark)').matches ? 'dark' : 'light';
+  const theme = localStorage.getItem('theme')
+                ? localStorage.getItem('theme')
+                : matchMedia('(prefers-color-scheme: dark)').matches
+                  ? "dark"
+                  : "light";
 
-  useEffect(() => {
-    setMode(defaultMode);
-  }, []);
+  if (theme === "dark") document.documentElement.setAttribute('data-theme', 'dark');
 
   return (
-    <div>
-
+    <div data-theme={theme}>
+      <Navbar navItems={navItems} _theme={theme} />
+      <Outlet />
+      <ToastContainer />
     </div>
   );
 }
