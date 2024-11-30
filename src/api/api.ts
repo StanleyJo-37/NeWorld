@@ -1,14 +1,14 @@
-import {Axios} from "axios";
+import { Axios } from "axios";
 
-const baseURL = "https://restcountries.com/v3.1/";
+const baseURL = "https://restcountries.com/v3.1";
 
 const axios = new Axios({
     baseURL
 })
 
-export async function getAllCountry() {
+export async function getAllCountries() {
     return await axios.request({
-        url: '/all',
+        url: 'all',
         method: 'GET',
     });
 }

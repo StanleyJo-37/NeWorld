@@ -1,0 +1,17 @@
+.navbar {
+    width: '100vw';
+    height: auto;
+    paddingHorizontal: 1rem;
+    display: 'flex';
+    flexDirection: 'column';
+    justifyContent: 'center';
+    alignItems: 'center';
+}
+
+.active-nav-item {
+    
+}
+
+.nav-item-icon {
+    
+}
