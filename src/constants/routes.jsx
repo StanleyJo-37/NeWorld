@@ -7,30 +7,27 @@ import App from "./../App";
 
 const routes = [
     {
-        path: "neworld",
+        path: '/',
+        element: <App />,
         children: [
             {
-                path: '/',
-                element: <App />
-            },
-            {
-                path: '/home',
+                index: true,
                 element: <Home />,
             },
             {
-                path: '/countries',
+                path: 'countries',
                 element: <Countries />,
             },
             {
-                path: '/country',
+                path: 'country-detail/:name',
                 element: <CountryDetail />,
             },
             {
-                path: '/search',
+                path: 'about',
                 element: <About />,
             },
             {
-                path: "/404",
+                path: "404",
                 element: <NotFound />,
             },
         ],
