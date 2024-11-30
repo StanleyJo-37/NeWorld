@@ -1,7 +1,7 @@
 import NotFound from "./../pages/NotFound";
 import Home from "./../pages/Home";
 import Countries from "./../pages/Countries";
-import Country from "./../pages/Country";
+import CountryDetail from "./../pages/CountryDetail";
 import About from "./../pages/About";
 import App from "./../App";
 
@@ -23,7 +23,7 @@ const routes = [
             },
             {
                 path: '/country',
-                element: <Country />,
+                element: <CountryDetail />,
             },
             {
                 path: '/search',
