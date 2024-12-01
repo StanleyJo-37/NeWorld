@@ -15,10 +15,22 @@ export default function Index() {
     const [debouncedSearchTerm] = useDebounce(searchTerm, 400);
     const [filter, setFilter] = useState();
 
+    const handleFilter = () => {
+
+    }
+
+    const handleSearch = () => {
+
+    }
+
+    const handleChangePage = () => {
+        
+    }
+
     const fetchCountries = async() => {
         try {
             const countries = await getAllCountries();
-            setCountries(JSON.parse(countries.data));
+            setCountries(JSON.parse(countries.data).sort((a, b) => a.name.common.localeCompare(b.name.common)));
         } catch (err) {
             if (err instanceof AxiosError) {
                 toast({
@@ -44,7 +56,6 @@ export default function Index() {
                 : (
                     <div
                         className="countries-container container"
-                        
                     >
                         {
                             countries.map((country, i) => (
