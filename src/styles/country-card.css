@@ -1,0 +1,28 @@
+.card-container {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-container {
+    height: 100px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flag-img {
+    height: 100%;
+    border: black;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    text-align: center;
+}
