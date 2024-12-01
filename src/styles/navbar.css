@@ -10,9 +10,6 @@
     align-items: center;
     padding: 3rem;
     box-sizing: border-box;
-    position: sticky;
-    top: 0;
-    left: 0;
 }
 
 .nav-choices {
