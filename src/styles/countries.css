@@ -2,8 +2,8 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 4rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
     padding-top: 1rem;
     box-sizing: border-box;
     overflow-x: hidden;

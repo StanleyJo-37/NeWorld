@@ -2,14 +2,16 @@
 @import "../index.css";
 
 .navbar {
-    width: 100%;
-    height: 3rem;
+    max-width: 100vw;
+    height: 5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 3rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
     box-sizing: border-box;
+	overflow-y: hidden;
 }
 
 .nav-choices {

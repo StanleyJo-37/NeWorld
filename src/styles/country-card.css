@@ -13,6 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .flag-img {
@@ -20,7 +21,6 @@
     border: black;
     border-style: solid;
     border-width: 1px;
-    margin-bottom: 1rem;
 }
 
 .card-title {

@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 import "./../styles/country-card.css";
 
 export default function CountryCard({ country, key }) {
+    CountryCard.propTypes = {
+        country: PropType.object.isRequired,
+        key: PropType.string,
+    };
     
     return (
         <Link
             key={key}
             to={{
-                pathname: `/country-detail/${country.name.common}`
+                pathname: `/country-detail/${country.name.official}`
             }}
+            preventScrollReset
             className="card-container"
         >
             <div
@@ -28,9 +33,4 @@ export default function CountryCard({ country, key }) {
             </div>
         </Link>
     );
-}
-
-CountryCard.propTypes = {
-    country: PropType.object,
-    key: PropType.number,
 }

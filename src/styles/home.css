@@ -1,0 +1,70 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    font-family: 'Nunito-ExtraBold';
+    height: 150vh;
+}
+
+.main-title {
+    font-size: 4rem;
+    stroke-width: .5px;
+    margin-bottom: 4rem;
+}
+
+.earth-ambience {
+    animation: spin 4s linear infinite;
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    width: 16rem;
+    height: 16rem;
+    z-index: -999;
+}
+
+.descripion {
+    margin-top: 1rem;
+    text-align: justify;
+    width: 60%;
+    font-family: 'Nunito-Regular';
+}
+
+.largest-countries-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media screen and (max-width: 640px) {
+    .earth-ambience {
+        width: 4rem;
+        height: 4rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    :root {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    :root {
+        font-size: 20px;
+    }
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
