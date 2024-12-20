@@ -2,18 +2,20 @@ import { useEffect, useState } from "react";
 import { getCountry } from "../../api/api";
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./../../styles/country-detail.css"
 
 export default function Index() {
     const {name} = useParams();
     const [country, setCountry] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate();
 
     const fetchCountry = async() => {
         try {
-            const country = await getCountry(name);
-            setCountry(JSON.parse(country.data)[0]);
+            const resp = await getCountry(name);
+            setCountry(JSON.parse(resp.data)[0]);
+            console.log(country);
         } catch (err) {
             if (err instanceof AxiosError) {
                 toast({
@@ -71,7 +73,7 @@ export default function Index() {
                     </h2>
                     <img
                         src={country.flags.png}
-                        alt={`${country.name.common}'s flag: ${country.flags.alt}`}
+                        alt={`${country.name.common}'s flag: ${country.flags.alt ?? ""}`}
                         className="flag-img"
                         style={{
                             width: '300px',
@@ -79,103 +81,117 @@ export default function Index() {
                     />
                 </div>
                 <div>
-                    <p>Currencies:</p>
-                    <ul
-                        style={{
-                            paddingLeft: 20,
-                        }}
-                    >
-                        {
-                            Object.keys(country.currencies).map(key => (
-                                    <li
-                                        key={key}
-                                    >
-                                        {country.currencies[key].name} 	&#40;{country.currencies[key].symbol}&#41;
-                                    </li>
+                    {country.currencies && <>
+                        <p>Currencies:</p>
+                        <ul
+                            style={{
+                                paddingLeft: 20,
+                            }}
+                        >
+                            {
+                                Object.keys(country.currencies).map(key => (
+                                        <li
+                                            key={key}
+                                        >
+                                            {country.currencies[key].name} 	&#40;{country.currencies[key].symbol}&#41;
+                                        </li>
+                                    )
                                 )
-                            )
-                        }
-                    </ul>
+                            }
+                        </ul>
+                    </>}
 
-                    <p>Capitals:</p>
-                    <ul
-                        style={{
-                            paddingLeft: 20,
-                        }}
-                    >
-                        {
-                            country.capital.map(capital => (
-                                    <li
-                                        key={capital}
-                                    >
-                                        {capital}
-                                    </li>
+                    {country.capital && <>
+                        <p>Capitals:</p>
+                        <ul
+                            style={{
+                                paddingLeft: 20,
+                            }}
+                        >
+                            {
+                                country.capital.map(capital => (
+                                        <li
+                                            key={capital}
+                                        >
+                                            {capital}
+                                        </li>
+                                    )
                                 )
-                            )
-                        }
-                    </ul>
+                            }
+                        </ul>
+                    </>}
 
-                    <p>Population: {country.population} people</p>
+                    {country.population && <>
+                        <p>Population: {country.population} people</p>
+                    </>}
 
-                    <p>Timezones:</p>
-                    <ul
-                        style={{
-                            paddingLeft: 20,
-                        }}
-                    >
-                        {
-                            country.timezones.map(timezone => (
-                                    <li
-                                        key={timezone}
-                                    >
-                                        {timezone}
-                                    </li>
+                    {country.timezones && <>
+                        <p>Timezones:</p>
+                        <ul
+                            style={{
+                                paddingLeft: 20,
+                            }}
+                        >
+                            {
+                                country.timezones.map(timezone => (
+                                        <li
+                                            key={timezone}
+                                        >
+                                            {timezone}
+                                        </li>
+                                    )
                                 )
-                            )
-                        }
-                    </ul>
+                            }
+                        </ul>
+                    </>}
 
-                    <p>Region: {country.region}</p>
-                    <p>Subregion: {country.subregion}</p>
+                    {country.region && <p>Region: {country.region}</p>}
+                    {country.region && <p>Subregion: {country.subregion ?? ""}</p>}
 
-                    <p>Continents:</p>
-                    <ul
-                        style={{
-                            paddingLeft: 20,
-                        }}
-                    >
-                        {
-                            country.continents.map(continent => (
-                                    <li
-                                        key={continent}
-                                    >
-                                        {continent}
-                                    </li>
+                    {country.continents && <>
+                        <p>Continents:</p>
+                        <ul
+                            style={{
+                                paddingLeft: 20,
+                            }}
+                        >
+                            {
+                                country.continents.map(continent => (
+                                        <li
+                                            key={continent}
+                                        >
+                                            {continent}
+                                        </li>
+                                    )
                                 )
-                            )
-                        }
-                    </ul>
+                            }
+                        </ul>
+                    </>}
 
-                    <p>Languages:</p>
-                    <ul
-                        style={{
-                            paddingLeft: 20,
-                        }}
-                    >
-                        {
-                            Object.keys(country.languages).map(key => (
-                                    <li
-                                        key={key}
-                                    >
-                                        {country.languages[key]}
-                                    </li>
+                    {country.languages && <>
+                        <p>Languages:</p>
+                        <ul
+                            style={{
+                                paddingLeft: 20,
+                            }}
+                        >
+                            {
+                                Object.keys(country.languages).map(key => (
+                                        <li
+                                            key={key}
+                                        >
+                                            {country.languages[key]}
+                                        </li>
+                                    )
                                 )
-                            )
-                        }
-                    </ul>
+                            }
+                        </ul>
+                    </>}
 
-                    <p>Latitude: {country.latlng[0]}</p>
-                    <p>Longitude: {country.latlng[1]}</p>
+                    {country.latlng && <>
+                        <p>Latitude: {country.latlng[0]}</p>
+                        <p>Longitude: {country.latlng[1]}</p>
+                    </>}
                 </div>
             </div>
         )
