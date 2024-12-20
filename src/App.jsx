@@ -1,8 +1,9 @@
 import './App.css';
 import Navbar from './components/navbar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { navItems } from './constants/nav-items';
+import CountryProvider from './providers/CountryProvider';
 
 export default function App() {
   const theme = localStorage.getItem('theme')
@@ -15,9 +16,12 @@ export default function App() {
 
   return (
     <div data-theme={theme}>
-      <Navbar navItems={navItems} _theme={theme} />
-      <Outlet />
-      <ToastContainer />
+      <CountryProvider>
+        <ScrollRestoration />
+        <Navbar navItems={navItems} _theme={theme} />
+        <Outlet />
+        <ToastContainer />
+      </CountryProvider>
     </div>
   );
 }
