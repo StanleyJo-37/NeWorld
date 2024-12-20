@@ -16,6 +16,9 @@ export async function getAllCountries() {
 export async function getCountry(name) {
     return await axios.request({
         url: `name/${name}`,
+        params: {
+            fullText: true,
+        },
         method: 'GET',
     });
 }
