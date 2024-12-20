@@ -3,6 +3,7 @@ import Home from "./../pages/Home";
 import Countries from "./../pages/Countries";
 import CountryDetail from "./../pages/CountryDetail";
 import About from "./../pages/About";
+import ErrorPage from "./../pages/ErrorPage";
 import App from "./../App";
 
 const routes = [
@@ -31,7 +32,7 @@ const routes = [
                 element: <NotFound />,
             },
         ],
-        errorElement: <NotFound />,
+        errorElement: <ErrorPage />,
         // loader: () => {
         //     return true;
         // }
